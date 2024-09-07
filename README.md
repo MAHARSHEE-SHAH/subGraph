@@ -1,28 +1,58 @@
-# Number of Subgraphs
+Subgraph Enumeration and Visualization
+Welcome to the Subgraph Enumeration and Visualization project! This repository contains code for finding all possible subgraphs of a given graph and visualizing them.
 
-Total number of subgraphs = Subgraphs with 1 isolated vertex + Subgraphs with 2 isolated vertices + ... + Subgraphs with n isolated vertices
+Overview
+This project was made possible thanks to Bhavik Dodda, who deserves full credit for:
 
-## Subgraphs with k isolated vertices
+Deriving the formula for enumerating subgraphs.
+Coding the enumeration process.
+Creating the scripts for visualizing subgraphs. You can check out his original work here: SubGraph Repository.
+My contribution involved taking a brute-force approach to verify and explore the subgraphs through exhaustive computation.
 
-We select all combinations of k vertices from the set of all vertices ($\binom{v}{k}$) and for each k-combination we have  $2^{\text{edges from G-\{k vertices\}}}$ subgraphs.
+How to Use
+1. Run the Enumeration Code
+Execute the find_all_subgraphs.py script to generate the list of subgraphs.
+Copy the output (excluding the last line) and paste it into a .txt file. This file will be used for visualization.
+2. Run the Visualization Code
+Execute the draw_subgraphs.py script.
+Ensure the .txt file from the previous step is in the same directory.
+The script will process the file and generate visualizations of the subgraphs.
+Getting Started
+Clone the Repository:
 
-Now, this has turned into another subproblem: to calculate the number of edges not connected to a specific k-vertex subgraph
+bash
+Copy code
+git clone https://github.com/MAHARSHEE-SHAH/Subgraphs.git
+cd Subgraphs
+Install Dependencies:
 
-### Edges in G-{k vertices}
+Ensure you have Python installed. Then, install the required packages using:
 
-Total number of edges - edges connected to each of the k vertices + edges amongst each of the k vertices 
+bash
+Copy code
+pip install matplotlib networkx
+Run the Code:
 
-(adding the last term to avoid double conting)
+To find subgraphs:
 
-$=e-\sum\limits_{v\in \text{K vertices}}\deg(v)+\text{edges in K vertices}$
+bash
+Copy code
+python find_all_subgraphs.py
+To visualize subgraphs:
 
-# Formula
+bash
+Copy code
+python draw_subgraphs.py
+Files
+find_all_subgraphs.py: Script to find all subgraphs and save the output.
+draw_subgraphs.py: Script to draw and display subgraphs.
+Contribution
+Feel free to contribute to this project by opening issues or submitting pull requests. Your feedback and suggestions are welcome!
 
-Let there be v number of vertices and e number of edges in a graph V.
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-$$
-\sum\limits_{k=0}^{v}\left[\sum\limits_{i\in C(v,j)}2^{e-\sum\limits_{a\in i}\deg(a)+\sum\limits_{b\in C(i,2)}\exists(\text{edge}(b))}\right]
-$$
+Contact
+For any questions or further information, please contact me at maharshee28@gmail.com.
 
-where C(x,y) is a function that takes a set x and a number y and returns combinations of elements of x of size y.
-$\exists \text{edge}$ returns 1 if edge exists between a pair of vertices and 0 otherwise.
+Huge thanks again to Bhavik Dodda for his incredible contributions to this project!
